@@ -10,3 +10,13 @@ options:
     azure-resource-provider-folder: "resource-manager"
     examples-dir: "{project-root}/examples"
     output-file: "{azure-resource-provider-folder}/{service-name}/{version-status}/{version}/sovereign.json"
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/sovereign"
+    emitter-output-dir: "{output-dir}/{service-dir}/armsovereign"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armsovereign"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true

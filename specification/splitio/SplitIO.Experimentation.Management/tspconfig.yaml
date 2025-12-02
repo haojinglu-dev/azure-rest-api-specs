@@ -6,6 +6,16 @@ options:
     emitter-output-dir: "{project-root}/.."
     azure-resource-provider-folder: "resource-manager"
     output-file: "{azure-resource-provider-folder}/{service-name}/{version-status}/{version}/splitio.json"
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/splitio"
+    emitter-output-dir: "{output-dir}/{service-dir}/armsplitio"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armsplitio"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"

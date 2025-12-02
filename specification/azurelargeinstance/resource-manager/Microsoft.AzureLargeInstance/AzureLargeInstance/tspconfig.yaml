@@ -10,3 +10,13 @@ options:
     arm-types-dir: "{project-root}/../../../../common-types/resource-management"
     output-file: "{version-status}/{version}/azurelargeinstance.json"
     use-read-only-status-schema: true
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/azurelargeinstance"
+    emitter-output-dir: "{output-dir}/{service-dir}/armazurelargeinstance"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armazurelargeinstance"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true

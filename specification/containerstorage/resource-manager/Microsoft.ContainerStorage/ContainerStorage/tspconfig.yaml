@@ -12,3 +12,13 @@ options:
     emitter-output-dir: "{project-root}"
     output-file: "{version-status}/{version}/containerstorage.json"
     arm-types-dir: "{project-root}/../../../../common-types/resource-management"
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/containerstorage"
+    emitter-output-dir: "{output-dir}/{service-dir}/armcontainerstorage"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armcontainerstorage"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true

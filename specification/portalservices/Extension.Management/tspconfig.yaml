@@ -8,6 +8,16 @@ options:
     emit-common-types-schema: "never"
     output-file: "{azure-resource-provider-folder}/{service-name}/extensions/{version-status}/{version}/extensions.json"
     omit-unreachable-types: true
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/portalservices"
+    emitter-output-dir: "{output-dir}/{service-dir}/armportalservices"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armportalservices"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"

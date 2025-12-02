@@ -10,6 +10,16 @@ options:
     examples-dir: "{project-root}/examples"
 
     arm-types-dir: "{project-root}/../../../../common-types/resource-management"
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/desktopvirtualization"
+    emitter-output-dir: "{output-dir}/{service-dir}/armdesktopvirtualization"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armdesktopvirtualization"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"

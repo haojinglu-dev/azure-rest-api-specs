@@ -8,6 +8,16 @@ options:
     output-file: "{version-status}/{version}/policy.json"
     arm-types-dir: "{project-root}/../../../../common-types/resource-management"
     omit-unreachable-types: true
+  "@azure-tools/typespec-go":
+    service-dir: "sdk/resourcemanager/purviewpolicy"
+    emitter-output-dir: "{output-dir}/{service-dir}/armpurviewpolicy"
+    module: "github.com/Azure/azure-sdk-for-go/{service-dir}/armpurviewpolicy"
+    fix-const-stuttering: true
+    flavor: "azure"
+    generate-samples: true
+    generate-fakes: true
+    head-as-boolean: true
+    inject-spans: true
 linter:
   extends:
     - "@azure-tools/typespec-azure-rulesets/resource-manager"
