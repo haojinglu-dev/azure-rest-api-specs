@@ -263,6 +263,60 @@ interface ScheduledActions {
     void,
     Occurrence
   >;
+
+  /** VirtualMachinesListBulkOperationErrors: List bulk operation errors for a resource group */
+  @added(Microsoft.ComputeSchedule.Versions.`2026-07-06-preview`)
+  #suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-operation" "necessary to avoid standard routing"
+  @route("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachines/bulkOperationErrors")
+  @get
+  virtualMachinesListBulkOperationErrors(
+    ...Azure.ResourceManager.Foundations.ApiVersionParameter,
+
+    @path
+    @doc("The ID of the target subscription.")
+    subscriptionId: Azure.Core.uuid,
+
+    @path
+    @doc("The name of the resource group.")
+    resourceGroupName: string,
+
+    @path
+    @minLength(1)
+    @segment("locations")
+    @doc("The location name.")
+    locationparameter: Azure.Core.azureLocation,
+
+    @query
+    @doc("A continuation token to retrieve the next page of results.")
+    continuationToken?: string,
+  ): ArmResponse<ListBulkOperationErrorsResponse> | ErrorResponse;
+
+  /** VirtualMachinesAcknowledgeBulkOperationErrors: Acknowledge bulk operation errors for a resource group */
+  @added(Microsoft.ComputeSchedule.Versions.`2026-07-06-preview`)
+  #suppress "@azure-tools/typespec-azure-resource-manager/arm-resource-operation" "necessary to avoid standard routing"
+  @route("/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ComputeSchedule/locations/{locationparameter}/virtualMachines/bulkOperationErrors/acknowledge")
+  @post
+  virtualMachinesAcknowledgeBulkOperationErrors(
+    ...Azure.ResourceManager.Foundations.ApiVersionParameter,
+
+    @path
+    @doc("The ID of the target subscription.")
+    subscriptionId: Azure.Core.uuid,
+
+    @path
+    @doc("The name of the resource group.")
+    resourceGroupName: string,
+
+    @path
+    @minLength(1)
+    @segment("locations")
+    @doc("The location name.")
+    locationparameter: Azure.Core.azureLocation,
+
+    @body
+    @doc("The list of operation ids to acknowledge")
+    operationIds: Array<string>,
+  ): ArmResponse<AcknowledgeBulkOperationErrorsResponse> | ErrorResponse;
 }
 
 // Recurring scheduledaction extension routes

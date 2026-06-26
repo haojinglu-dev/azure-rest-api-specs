@@ -524,3 +524,28 @@ model GetOperationErrorsResponse {
   @doc("An array of operationids and their corresponding errors if any")
   results: Array<OperationErrorsResult>;
 }
+
+// ----------- BulkOperationErrors ---------
+@added(Microsoft.ComputeSchedule.Versions.`2026-07-06-preview`)
+@doc("The response from listing bulk operation errors")
+model ListBulkOperationErrorsResponse {
+  @identifiers(#["resourceId"])
+  @doc("The list of bulk operation errors")
+  items: Array<ResourceOperation>;
+
+  @doc("A continuation token to retrieve the next page of results")
+  continuationToken?: string;
+}
+
+@added(Microsoft.ComputeSchedule.Versions.`2026-07-06-preview`)
+@doc("The response from acknowledging bulk operation errors")
+model AcknowledgeBulkOperationErrorsResponse {
+  @doc("The set of operation ids that were newly acknowledged")
+  acknowledged: Array<string>;
+
+  @doc("The set of operation ids that were not found in the completed operations store")
+  notFound: Array<string>;
+
+  @doc("The set of operation ids that were skipped because they were already acknowledged, not failed, or belong to a different scope")
+  skipped: Array<string>;
+}
